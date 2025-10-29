@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ghi chép JS - Mảng (Array)</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <!-- PrismJS CSS (tema Okaidia) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      .tagline {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+      .checklist {
+        list-style: square;
+        padding-left: 1.25rem;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .checklist li + li {
+        margin-top: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="dot"></div>
+          <span class="brand-text">Ghi chép JavaScript - Array</span>
+        </div>
+        <nav class="top-nav">
+          <a href="#intro">Giới thiệu</a>
+          <a href="#array-basic">Cơ bản</a>
+          <a href="#loops">Duyệt mảng</a>
+          <a href="#examples">Ví dụ</a>
+          <a href="#exercise">Bài tập</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h2 class="sidebar-title">Mục lục</h2>
+          <ul class="toc">
+            <li><a href="#intro">1. Giới thiệu về Array</a></li>
+            <li><a href="#array-basic">2. Khai báo & truy cập phần tử</a></li>
+            <li><a href="#loops">3. Các cách duyệt mảng</a></li>
+            <li><a href="#examples">4. Ví dụ thực hành</a></li>
+            <li><a href="#exercise">5. Bài tập luyện tập</a></li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">Ghi chú nhanh</h3>
+          <ul class="tip-list">
+            <li>Mảng là dạng đặc biệt của Object.</li>
+            <li>Dùng để lưu trữ danh sách dữ liệu.</li>
+            <li>Chỉ nên dùng 1 kiểu dữ liệu trong 1 mảng.</li>
+            <li>
+              Duyệt mảng: <code>for</code>, <code>for...in</code>,
+              <code>for...of</code>.
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- CONTENT -->
+      <section class="content">
+        <!-- INTRO -->
+        <article class="card" id="intro">
+          <h2 class="card-title">1. Giới thiệu về Array</h2>
+          <p class="desc">
+            Array (mảng) là một dạng đặc biệt của Object, dùng để lưu trữ danh
+            sách các phần tử. Mỗi phần tử có một chỉ số (index) bắt đầu từ 0.
+          </p>
+
+          <pre class="code-block"><code>// Array là một dạng của Object
+const myArr = ["Phương Anh", "Phương Anh", "Phương Anh", "An", "Dũng"];
+console.log(myArr.length); // độ dài mảng
+console.log(myArr);
+</code></pre>
+
+          <p class="note">
+            Trên thực tế, mảng có thể chứa mọi kiểu dữ liệu — số, chuỗi,
+            boolean, object, thậm chí mảng khác — nhưng trong dự án thực tế nên
+            thống nhất 1 kiểu dữ liệu để dễ quản lý.
+          </p>
+        </article>
+
+        <!-- ARRAY BASIC -->
+        <article class="card" id="array-basic">
+          <h2 class="card-title">2. Khai báo, truy cập & cập nhật phần tử</h2>
+
+          <pre class="code-block"><code>// Truy cập phần tử theo index
+console.log(myArr[0]);
+
+// Cập nhật giá trị tại index
+myArr[0] = "Vũ Anh";
+myArr[1] = "Tạ An";
+myArr[2] = "Quốc Dũng";
+console.log(myArr[0]);
+
+// Thêm phần tử mới
+myArr[myArr.length] = "Bảo Trâm";
+console.log(myArr);
+</code></pre>
+
+          <p class="note">
+            Khi thêm phần tử mới, chỉ cần gán vào vị trí
+            <code>myArr[myArr.length]</code> — JS sẽ tự thêm vào cuối mảng.
+          </p>
+        </article>
+
+        <!-- LOOPS -->
+        <article class="card" id="loops">
+          <h2 class="card-title">3. Duyệt mảng trong JavaScript</h2>
+          <p class="desc">
+            Có nhiều cách duyệt qua các phần tử của mảng, tuỳ trường hợp sử
+            dụng.
+          </p>
+
+          <h3 class="sub-title">Cách 1. For thông thường</h3>
+          <pre
+            class="code-block"
+          ><code>for (let i = 0; i &lt; myArr.length; i++) {
+  console.log(myArr[i]);
+}</code></pre>
+
+          <h3 class="sub-title">Cách 2. For...in (lấy index)</h3>
+          <pre class="code-block"><code>for (let index in myArr) {
+  console.log(index);
+}</code></pre>
+
+          <h3 class="sub-title">Cách 3. For...of (lấy value)</h3>
+          <pre class="code-block"><code>for (let value of myArr) {
+  console.log(value);
+}</code></pre>
+
+          <p class="note">
+            <code>for...in</code> duyệt theo index — phù hợp khi cần vị trí.
+            <code>for...of</code> chỉ trả về giá trị — tiện khi chỉ cần đọc.
+          </p>
+        </article>
+
+        <!-- EXAMPLES -->
+        <article class="card" id="examples">
+          <h2 class="card-title">4. Ví dụ thực hành</h2>
+
+          <h3 class="sub-title">Tính tổng số chẵn trong mảng</h3>
+          <pre class="code-block"><code>function sumArr(numbers) {
+  let sum = 0;
+  for (let number of numbers) {
+    if (number % 2 === 0) sum += number;
+  }
+  return sum;
+}
+
+console.log(sumArr([5, 2, 8, 7, -3, -6]));</code></pre>
+
+          <h3 class="sub-title">Xoá phần tử trong mảng (tạo mảng mới)</h3>
+          <pre class="code-block"><code>let indexDelete = 2;
+const newArr = [];
+
+for (index in myArr) {
+  if (indexDelete === +index) continue;
+  newArr[newArr.length] = myArr[index];
+}
+
+console.log(newArr);</code></pre>
+
+          <h3 class="sub-title">Tìm số lớn nhất và hoán đổi vị trí</h3>
+          <pre class="code-block"><code>function swap(numbers) {
+  console.log(numbers);
+
+  let max = numbers[0];
+  let indexOfMax = 0;
+
+  for (let number in numbers) {
+    if (max &lt; numbers[number]) {
+      max = numbers[number];
+      indexOfMax = number;
+    }
+  }
+
+  numbers[indexOfMax] = numbers[0];
+  numbers[0] = max;
+
+  return numbers;
+}
+
+console.log(swap([5, 2, 8, 7, 100, -6]));</code></pre>
+
+          <p class="note">
+            Khi cần đổi vị trí hai phần tử, luôn cần biết **index** của chúng
+            trong mảng.
+          </p>
+        </article>
+
+        <!-- EXERCISE -->
+        <article class="card" id="exercise">
+          <h2 class="card-title">5. Bài tập luyện tập</h2>
+          <p class="desc">Xoá các phần tử trùng nhau trong mảng người dùng.</p>
+
+          <pre
+            class="code-block"
+          ><code>const myUser = ["User 1", "User 2", "User 3", "User 2", "User 4"];
+let newMyUser = [];
+
+for (let index in myUser) {
+  let isValid = true;
+
+  for (let user of newMyUser) {
+    if (user === myUser[index]) {
+      isValid = false;
+      break;
+    }
+  }
+
+  if (isValid) {
+    newMyUser[newMyUser.length] = myUser[index];
+  }
+}
+
+console.log(newMyUser);</code></pre>
+
+          <p class="note">
+            Logic: Với mỗi phần tử, kiểm tra xem đã tồn tại trong mảng mới chưa.
+            Nếu chưa — thêm vào; nếu có — bỏ qua.
+          </p>
+        </article>
+
+        <footer class="footer">
+          <p>Ghi chép luyện JS - Làm việc với Mảng (Array)</p>
+          <span class="small"
+            >Khai báo • Duyệt mảng • Xử lý logic • Bài tập loại phần tử trùng
+            nhau</span
+          >
+        </footer>
+      </section>
+    </main>
+    <script src="./js/ex02.js"></script>
+  </body>
+</html>

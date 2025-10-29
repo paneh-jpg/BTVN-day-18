@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài tập JS - 29/10/2025</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="./favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./favicon/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="./favicon/site.webmanifest" />
+    <!-- PrismJS CSS (tema Okaidia) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <style>
+      /* Chút style riêng cho preview highlight và kết quả */
+      .result-preview {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 0.75rem;
+        padding: 1rem 1.25rem;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #e2e8f0;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      }
+
+      .result-preview span {
+        background-color: rgba(255, 107, 0, 0.18);
+        color: #fff;
+        padding: 0 0.2em;
+        border-radius: 0.3em;
+        box-shadow: 0 0 10px rgba(255, 107, 0, 0.6);
+      }
+
+      .tagline {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        margin-top: -0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .checklist {
+        list-style: square;
+        padding-left: 1.25rem;
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .checklist li + li {
+        margin-top: 0.4rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="dot"></div>
+          <span class="brand-text">Bài tập JavaScript • 29-10-2025</span>
+        </div>
+        <nav class="top-nav">
+          <a href="#bai-1">Bài 1</a>
+          <a href="#bai-2">Bài 2</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container layout">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-card">
+          <h2 class="sidebar-title">Mục lục</h2>
+          <ul class="toc">
+            <li><a href="#intro">Giới thiệu</a></li>
+            <li><a href="#bai-1">Bài 1: Highlight từ khóa</a></li>
+            <li><a href="#bai-2">Bài 2: Mật khẩu mạnh/yếu</a></li>
+          </ul>
+        </div>
+
+        <div class="tip-card">
+          <h3 class="tip-title">Note nhanh</h3>
+          <ul class="tip-list">
+            <li>
+              Dùng <code>while</code> để tìm nhiều lần xuất hiện trong chuỗi.
+            </li>
+            <li>
+              Dùng <code>includes</code>, <code>slice</code>,
+              <code>indexOf</code> cho xử lý chuỗi.
+            </li>
+            <li>Mật khẩu mạnh không chỉ “dài”, còn phải đa dạng ký tự.</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <section class="content">
+        <!-- GIỚI THIỆU -->
+        <article class="card" id="intro">
+          <h2 class="card-title">Ghi chép buổi 29/10/2025</h2>
+          <p class="tagline">console.log("Hello Word")</p>
+          <p class="desc">
+            Đây là loạt bài tập luyện tư duy xử lý chuỗi và kiểm tra dữ liệu đầu
+            vào. Quan trọng: cách tách logic rõ ràng, dễ tái sử dụng.
+          </p>
+        </article>
+
+        <!-- BÀI 1 -->
+        <article class="card" id="bai-1">
+          <h2 class="card-title">
+            Bài 1. Tô sáng từ khóa &amp; đếm số lần xuất hiện
+          </h2>
+
+          <p class="desc">
+            Yêu cầu: Cho trước một chuỗi nội dung và một từ khóa. - Bôi vàng
+            (highlight) tất cả vị trí xuất hiện của từ khóa trong đoạn văn. -
+            Đếm tổng số lần xuất hiện. - Hiển thị lại nội dung sau khi đã
+            highlight.
+          </p>
+
+          <h3 class="sub-title">Code của bài 1</h3>
+
+          <pre class="code-block"><code>console.log("Hello Word");
+
+// 29-10-2025 (Làm bài tập)
+// Bài 1:
+let keyWord = "o";
+let total = 0;
+
+let content = \`Ipsum dolor, sit amet consectetur Lorem  adipisicing elit. Minus velit id
+    recusandae iusto autem sunt ipsum, temporibus eius veritatis, minima
+    officiis sint quidem explicabo impedit mollitia quaerat aut ducimus tempora
+    Lorem eligendi. Possimus tempora exercitationem, assumenda neque, ipsam
+    cupiditate hic dolores aliquam accusantium Lorem quidem corrupti quisquam
+    voluptate,  Lorem  odio?Lorem ipsum dolor sit amet consectetur adipisicing
+    elit. Facilis, exercitationem? Modi, excepturi corrupti reiciendis, quae
+    itaque veniam accusamus dolorem Lorem quo tempora dolorum eveniet officiis
+    nihil veritatis iste libero odit, nesciunt Lorem. Esse eum eveniet a. In,
+    distinctio Lorem non provident cum magni eos aut odit fuga facere
+    ratione eius!\`;
+
+let newContent = "";
+let position = content.toLowerCase().indexOf(keyWord.toLowerCase());
+
+while (position !== -1) {
+  newContent =
+    newContent +
+    content.slice(0, position) +
+    "&lt;span&gt;" +
+    content.slice(position, position + keyWord.length) +
+    "&lt;/span&gt;";
+
+  // Cắt bỏ phần đã xử lý khỏi content
+  content = content.slice(position + keyWord.length);
+
+  total++;
+
+  // Tìm tiếp
+  position = content.toLowerCase().indexOf(keyWord.toLowerCase());
+}
+
+// Ghép phần còn lại
+newContent += content;
+
+document.body.innerHTML = \`&lt;p&gt;Từ khóa : \${keyWord}&lt;/p&gt;
+&lt;p&gt;\${newContent}&lt;/p&gt;
+&lt;p&gt;Đã tìm thấy \${total} kết quả phù hợp.&lt;/p&gt;\`;
+</code></pre>
+
+          <h3 class="sub-title">Giải thích ý tưởng</h3>
+          <ul class="checklist">
+            <li>
+              Dùng <code>indexOf</code> để tìm vị trí (position) xuất hiện tiếp
+              theo của từ khóa.
+            </li>
+            <li>
+              Mỗi lần tìm thấy, ta cắt phần <em>trước</em> và phần
+              <em>trúng keyword</em> ra và bọc bằng thẻ
+              <code>&lt;span&gt;...&lt;/span&gt;</code> để highlight.
+            </li>
+            <li>
+              Sau đó cập nhật lại biến <code>content</code> chỉ còn phần CHƯA xử
+              lý.
+            </li>
+            <li>
+              Tiếp tục lặp với <code>while</code> cho đến khi không còn xuất
+              hiện nào nữa (<code>position === -1</code>).
+            </li>
+            <li>
+              Cuối cùng ghép phần còn lại vào <code>newContent</code> và in ra.
+            </li>
+          </ul>
+
+          <h3 class="sub-title">Kết quả hiển thị mẫu</h3>
+          <div class="result-preview">
+            <p><strong>Từ khóa :</strong> o</p>
+            <p>
+              Ipsum d<span>o</span>lor, sit amet c<span>o</span>nsectetur
+              L<span>o</span>rem&nbsp; adipisicing elit...
+              <!-- phần này chỉ minh hoạ, không cần giống 100% output thật -->
+            </p>
+            <p>
+              <strong>Đã tìm thấy:</strong> <code>total</code> lần xuất hiện.
+            </p>
+          </div>
+
+          <p class="note">
+            Đây chính là nền bài "highlight text" mà bạn đã học trước đó: tìm
+            kiếm từ khóa trong đoạn văn và bọc nó bằng &lt;span&gt; để đổi màu
+            nền.
+          </p>
+        </article>
+
+        <!-- BÀI 2 -->
+        <article class="card" id="bai-2">
+          <h2 class="card-title">Bài 2. Kiểm tra độ mạnh của mật khẩu</h2>
+
+          <p class="desc">
+            Yêu cầu: Viết hàm <code>isStrongPassword(password)</code> để kiểm
+            tra chất lượng mật khẩu. Trả về thông báo lỗi cụ thể nếu chưa đạt
+            yêu cầu.
+          </p>
+
+          <h3 class="sub-title">Điều kiện mật khẩu mạnh</h3>
+          <ul class="checklist">
+            <li>Dài tối thiểu 8 ký tự.</li>
+            <li>Có ít nhất <strong>2 ký tự in hoa</strong> (A-Z).</li>
+            <li>Có ít nhất <strong>2 ký tự thường</strong> (a-z).</li>
+            <li>Có ít nhất <strong>1 chữ số</strong> (0-9).</li>
+            <li>
+              Có ít nhất <strong>1 ký tự đặc biệt</strong> trong
+              <code>!@#$%^&amp;*()</code>.
+            </li>
+          </ul>
+
+          <h3 class="sub-title">Code của bài 2</h3>
+
+          <pre
+            class="code-block"
+          ><code>// Bài 2: Kiểm tra độ mạnh yếu của mật khẩu.
+// Điều kiện:
+// - Từ 8 kí tự trở lên
+// - Có ít nhất 2 kí tự viết hoa
+// - Có ít nhất 2 kí tự viết thường
+// - Có ít nhất 1 số
+// - Có ít nhất 1 kí tự đặc biệt
+
+function isStrongPassword(password) {
+  const specialChar = "!@#$%^&*()";
+  const number = "0123456789";
+
+  if (password.length &lt; 8)
+    return "Mật khẩu cần ít nhất 8 kí tự.";
+
+  let hasSpecial = false;
+  let hasNum = false;
+  let hasLowChar = false;
+  let hasUpChar = false;
+  let countUpChar = 0;
+  let countLowChar = 0;
+
+  for (let i = 0; i &lt; password.length; i++) {
+    if (specialChar.includes(password[i])) {
+      hasSpecial = true;
+    } else if (number.includes(password[i])) {
+      hasNum = true;
+    } else if (password[i] &gt;= "A" && password[i] &lt;= "Z") {
+      countUpChar += 1;
+    } else if (password[i] &gt;= "a" && password[i] &lt;= "z") {
+      countLowChar += 1;
+    }
+  }
+
+  if (countUpChar &gt; 1) {
+    hasUpChar = true;
+  }
+
+  if (countLowChar &gt; 1) {
+    hasLowChar = true;
+  }
+
+  if (!hasSpecial) {
+    return "Mật khẩu cần ít nhất 1 kí tự đặc biệt.";
+  }
+
+  if (!hasNum) {
+    return "Mật khẩu cần ít nhất 1 kí tự số.";
+  }
+
+  if (!hasUpChar) {
+    return "Mật khẩu cần ít nhất 2 kí tự viết hoa.";
+  }
+
+  if (!hasLowChar) {
+    return "Mật khẩu cần ít nhất 2 kí tự viết thường";
+  }
+
+  return \`Mật khẩu của bạn là : \${password}\`;
+}
+
+console.log(isStrongPassword("PP1@nn1aaaa"));
+</code></pre>
+
+          <h3 class="sub-title">Phân tích logic duyệt từng ký tự</h3>
+          <ul class="checklist">
+            <li>
+              <code>specialChar.includes(password[i])</code> → phát hiện ký tự
+              đặc biệt.
+            </li>
+            <li>
+              <code>number.includes(password[i])</code> → phát hiện chữ số.
+            </li>
+            <li>
+              <code>password[i] &gt;= "A" && password[i] &lt;= "Z"</code> → ký
+              tự in hoa (A-Z).
+            </li>
+            <li>
+              <code>password[i] &gt;= "a" && password[i] &lt;= "z"</code> → ký
+              tự thường (a-z).
+            </li>
+            <li>
+              Dùng biến đếm <code>countUpChar</code>,
+              <code>countLowChar</code> rồi chuyển thành cờ
+              <code>hasUpChar</code>, <code>hasLowChar</code> để kiểm tra điều
+              kiện tối thiểu.
+            </li>
+          </ul>
+
+          <p class="note">
+            Ưu điểm: Bạn đang trả về thông báo cụ thể vì sao mật khẩu chưa đạt.
+            Đây là UX rất tốt cho form đăng ký thực tế.
+          </p>
+        </article>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <p>
+            Ghi chép luyện JS ngày 29/10/2025 • Xử lý chuỗi &amp; Validate form
+            đầu vào
+          </p>
+          <span class="small"
+            >Highlight Text • While loop • String slicing • Password strength
+            check</span
+          >
+        </footer>
+      </section>
+    </main>
+    <script src="./js/ex01.js"></script>
+  </body>
+</html>
