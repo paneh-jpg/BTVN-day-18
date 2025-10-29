@@ -77,18 +77,16 @@ function getNumbersDivisibleBy3(arr) {
 }
 console.log(getNumbersDivisibleBy3(getNumGreaterThan10(nums)));
 
-function getDoubleEvenNumbers(arr) {
+function getDoubleOddNumbers(arr) {
   let newArr = [];
   for (let num of arr) {
-    if (num % 2 === 0) {
+    if (num % 2 !== 0) {
       newArr[newArr.length] = num * 2;
-    } else {
-      newArr[newArr.length] = num;
     }
   }
   return newArr;
 }
-console.log(getDoubleEvenNumbers(nums));
+console.log(getDoubleOddNumbers(nums));
 
 //Bài 4:
 const words = ["javascript", "php", "css", "html", "python", "java"];
