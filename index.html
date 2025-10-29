@@ -83,9 +83,6 @@
         color: #38bdf8;
         margin-top: 0;
       }
-      h2 {
-        flex-shrink: 0;
-      }
 
       p {
         line-height: 1.6;
@@ -102,8 +99,8 @@
 
       .note__top {
         display: flex;
-        align-items: center;
-        gap: 10px;
+        align-items: flex-start;
+        flex-direction: column;
       }
 
       footer {
@@ -112,6 +109,10 @@
         padding: 20px 0;
         margin-top: 40px;
         border-top: 1px solid #1f2937;
+      }
+
+      .note__desc {
+        margin-top: -10px;
       }
     </style>
   </head>
@@ -136,73 +137,185 @@
 
       <div class="note">
         <div class="note__top">
-          <h2>Bài 1:</h2>
-          <p></p>
+          <h2>Bài 1: Cho trước mảng: const arr = [1, 2, 3, 4, 5, 6];</h2>
+          <p class="note__desc">
+            * Tạo mảng mới chứa bình phương của từng phần tử. <br />
+            * Tạo mảng mới chứa các số chẵn trong mảng. <br />
+            * Tạo mảng mới chứa các số bình phương nhưng chỉ lấy số lẻ.
+          </p>
         </div>
         <div class="code">
           <pre
             class="line-numbers"
-          ><code class="language-javascript"></code></pre>
+          ><code class="language-javascript">const arr = [1, 2, 3, 4, 5, 6];
+
+const getSquareOfNum = (arr) => {
+  let newArr = [];
+  for (let num of arr) {
+    newArr[newArr.length] = num ** 2;
+  }
+  return newArr;
+};
+console.log(getSquareOfNum(arr)); //(6) [1, 4, 9, 16, 25, 36]
+
+const getEvenNum = (arr) => {
+  let newArr = [];
+  for (let num of arr) {
+    if (num % 2 === 0) newArr[newArr.length] = num;
+  }
+  return newArr;
+};
+console.log(getEvenNum(arr)); //(3) [2, 4, 6]
+
+const getSquareOfOddNum = (arr) => {
+  let newArr = [];
+  for (let num of arr) {
+    if (num % 2 !== 0) newArr[newArr.length] = num ** 2;
+  }
+  return newArr;
+};
+console.log(getSquareOfOddNum(arr)); //(3) [1, 9, 25]</code></pre>
         </div>
       </div>
 
       <div class="note">
         <div class="note__top">
-          <h2>Bài 2:</h2>
-          <p></p>
+          <h2>
+            Bài 2: Cho trước mảng: const names = [" hoang ", "AN", " f8 ",
+            "Education"];
+          </h2>
+          <p class="note__desc">
+            * Tạo mảng mới chứa các phần tử đã được xoá khoảng trắng thừa và
+            viết thường toàn bộ. <br />
+            => Kết quả: ["hoang", "an", "f8", "education"] <br />
+            * Tạo mảng mới viết chữ cái đầu hoa <br />
+            => Kết quả: (Hoang, An, F8, Education)
+          </p>
         </div>
         <div class="code">
           <pre
             class="line-numbers"
-          ><code class="language-javascript"></code></pre>
+          ><code class="language-javascript">const names = [" hoang ", "AN", " f8 ", "Education"];
+
+function transformArray(arr, callback) {
+  let newArr = [];
+  for (let name of arr) {
+    newArr[newArr.length] = callback(name);
+  }
+  return newArr;
+}
+
+function toCleanLowerString(name) {
+  return name.trim().toLowerCase();
+}
+
+function capitalizeFirst(name) {
+  name = toCleanLowerString(name);
+  return name[0].toUpperCase() + name.slice(1);
+}
+
+console.log(transformArray(names, toCleanLowerString));
+//(4) ['hoang', 'an', 'f8', 'education']
+
+console.log(transformArray(names, capitalizeFirst));
+//(4) ['Hoang', 'An', 'F8', 'Education']</code></pre>
         </div>
       </div>
 
       <div class="note">
         <div class="note__top">
-          <h2>Bài 3:</h2>
-          <p></p>
+          <h2>Bài 3: Cho trước mảng: const nums = [3, 7, 2, 9, 12, 15, 18];</h2>
+          <p class="note__desc">
+            * Lấy ra mảng mới chỉ chứa số lớn hơn hoặc bằng 10. <br />
+            * Từ mảng mới trên, tạo mảng chỉ chứa số chia hết cho 3. <br />
+            * Với mảng ban đầu, tạo mảng mới tăng gấp đôi nhưng chỉ giữ lại số
+            lẻ.
+          </p>
         </div>
         <div class="code">
           <pre
             class="line-numbers"
-          ><code class="language-javascript"></code></pre>
+          ><code class="language-javascript">const nums = [3, 7, 2, 9, 12, 15, 18];
+function getNumGreaterThan10(arr) {
+  let newArr = [];
+  for (let num of arr) {
+    if (num >= 10) {
+      newArr[newArr.length] = num;
+    }
+  }
+  return newArr;
+}
+console.log(getNumGreaterThan10(nums));
+
+function getNumbersDivisibleBy3(arr) {
+  let newArr = [];
+  for (let num of arr) {
+    if (num % 3 === 0) newArr[newArr.length] = num;
+  }
+  return newArr;
+}
+console.log(getNumbersDivisibleBy3(getNumGreaterThan10(nums)));
+
+function getDoubleEvenNumbers(arr) {
+  let newArr = [];
+  for (let num of arr) {
+    if (num % 2 === 0) {
+      newArr[newArr.length] = num * 2;
+    } else {
+      newArr[newArr.length] = num;
+    }
+  }
+  return newArr;
+}
+console.log(getDoubleEvenNumbers(nums));</code></pre>
         </div>
       </div>
 
       <div class="note">
         <div class="note__top">
-          <h2>Bài 4:</h2>
-          <p></p>
+          <h2>
+            Bài 4: Cho trước mảng const words = ["javascript", "php", "css",
+            "html", "python", "java"];
+          </h2>
+          <p>
+            * Lọc ra các từ có độ dài >= 5. <br />
+            * Tạo mảng mới viết hoa toàn bộ. <br />
+            * Tạo mảng mới viết ngược từng chuỗi (tpircsavaj, avaj...).
+          </p>
         </div>
         <div class="code">
           <pre
             class="line-numbers"
-          ><code class="language-javascript"></code></pre>
-        </div>
-      </div>
+          ><code class="language-javascript">const words = ["javascript", "php", "css", "html", "python", "java"];
 
-      <div class="note">
-        <div class="note__top">
-          <h2>Bài 5:</h2>
-          <p></p>
-        </div>
-        <div class="code">
-          <pre
-            class="line-numbers"
-          ><code class="language-javascript"></code></pre>
-        </div>
-      </div>
+function filterLongWords(arr) {
+  let newArr = [];
+  for (let word of arr) {
+    if (word.length >= 5) {
+      newArr[newArr.length] = word;
+    }
+  }
+  return newArr;
+}
+console.log(filterLongWords(words));
 
-      <div class="note">
-        <div class="note__top">
-          <h2>Bài 6:</h2>
-          <p></p>
-        </div>
-        <div class="code">
-          <pre
-            class="line-numbers"
-          ><code class="language-javascript"></code></pre>
+//Sử dụng lại function transformArray() ở bài 2
+function toUpperCaseWords(word) {
+  return word.toUpperCase();
+}
+console.log(transformArray(words, toUpperCaseWords));
+
+//Sử dụng lại function transformArray() ở bài 2
+function reverseString(word) {
+  let newWord = "";
+  for (let i = word.length - 1; i >= 0; i--) {
+    newWord += word[i];
+  }
+
+  return newWord;
+}
+
+console.log(transformArray(words, reverseString));</code></pre>
         </div>
       </div>
     </main>
